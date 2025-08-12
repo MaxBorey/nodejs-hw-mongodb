@@ -34,11 +34,14 @@ export const getContactsIdController = async (req, res) => {
     throw createHttpError(404, "Contact not found");
   }
 
- res.json({
+  const response = {
     status: 200,
     data: contact,
     message: `Successfully found contact with id ${contactId}!`,
-  });
+  };
+
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(response, null, 2));
 };
 
 export const postContacts = async (req, res) => {
