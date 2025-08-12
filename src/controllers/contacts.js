@@ -16,11 +16,14 @@ export const getContactsController = async (req, res) => {
     filter,
   });
 
-  res.json({
+  const response = {
     status: 200,
     message: 'Successfully found contacts!',
     data: contacts,
-  });
+  };
+
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(response, null, 2));
 };
 
 export const getContactsIdController = async (req, res) => {

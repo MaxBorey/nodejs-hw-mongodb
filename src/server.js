@@ -10,10 +10,6 @@ const PORT = Number(getEnvVar('PORT', '3000'));
 
 export const setupServer = () => {
  const app = express();
-
-  if (process.env.NODE_ENV === 'development') {
-  app.set('json spaces', 2);
-  }
   
   app.use(express.json());
   app.use(cors());
