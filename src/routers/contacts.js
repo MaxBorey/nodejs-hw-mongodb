@@ -3,8 +3,11 @@ import { deleteContactsController, getContactsController, getContactsIdControlle
 import { validateBody } from '../middlewares/validateBody.js';
 import { createContactShema, updateContactSchema } from '../validation/contacts.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = Router();
+
+router.use(authenticate);
 
 router.get('/contacts', getContactsController);
 router.get('/contacts/:contactId', isValidId, getContactsIdController);
