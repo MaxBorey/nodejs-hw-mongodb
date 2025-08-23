@@ -57,18 +57,13 @@ export const updateContact = async (contactId, userId,  payload, options = {}) =
     { _id: contactId, userId },
     payload,
     {
-      new: true,
-      includeResultMetadata: true,
+       new: true,
+      runValidators: true,
       ...options,
     },
   );
 
-  if (!rawResult || !rawResult.value) return null;
-
-  return {
-    contact: rawResult.value,
-    isNew: Boolean(rawResult?.lastErrorObject?.upserted),
-  };
+  return rawResult;
 };
 
 export const deleteContactsById = async (contactId, userId) => {
