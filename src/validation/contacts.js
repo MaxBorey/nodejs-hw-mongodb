@@ -40,6 +40,7 @@ export const createContactShema = Joi.object({
     'any.required': 'contactType is required',
     'string.base': 'contactType must be a string',
   }),
+    photo: Joi.string().uri({ scheme: ['http', 'https'] }).optional(),
 });
 
 
@@ -76,5 +77,6 @@ export const updateContactSchema = Joi.object({
         .messages({
       'any.only': 'contactType must be one of [work, home, personal]',
       'string.base': 'contactType must be a string',
-    }),
+        }),
+    photo: Joi.string().uri({ scheme: ['http', 'https'] }).optional(),
 });
