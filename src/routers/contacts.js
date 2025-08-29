@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { deleteContactsController, getContactsController, getContactsIdController, patchContactsController, postContacts as postContactsController } from '../controllers/contacts.js';
+import { deleteContactsController, getContactsController, getContactsIdController, patchContactsController, postContactsController } from '../controllers/contacts.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { createContactShema, updateContactSchema } from '../validation/contacts.js';
 import { isValidId } from '../middlewares/isValidId.js';

@@ -8,6 +8,7 @@ import { saveFileToUploadDir } from "../utils/saveFileToUploadDir.js";
 import { saveFileToCloudinary } from "../utils/saveFileToCloudinary.js";
 
 
+
 export const getContactsController = async (req, res, next) => {
   try {
   const { page, perPage } = parsePaginationParams(req.query);
@@ -54,26 +55,47 @@ export const getContactsIdController = async (req, res, next) => {
   }
 };
 
-export const postContacts = async (req, res, next) => {
+export const postContactsController = async (req, res, next) => {
   try {
-  const { name, phoneNumber, email, isFavourite, contactType, photo } = req.body;
+    const file = req.file; 
+    let photoUrl;
 
-  const contact = await createContact({
-    name,
-    phoneNumber,
-    email,
-    isFavourite,
-    contactType,
-    photo,
-  }, req.user._id
-  );
+    if (file) {
+      if (getEnvVar('ENABLE_CLOUDINARY') === 'true') {
+        photoUrl = await saveFileToCloudinary(file);
+      } else {
+        photoUrl = await saveFileToUploadDir(file);
+      }
+    }
 
-  res.status(201).json({
-    status: 201,
-    message: "Successfully created a contact!",
-    data: contact,
-  });
-} catch (err) {
+    const bodyUrl = typeof req.body.photo === 'string' ? req.body.photo.trim() : '';
+    if (!photoUrl && bodyUrl) {
+      if (!/^https?:\/\//i.test(bodyUrl)) {
+        throw createHttpError(400, 'photo must be a valid http(s) URL');
+      }
+      photoUrl = bodyUrl;
+    }
+
+    const { name, phoneNumber, email, isFavourite, contactType } = req.body;
+
+    const contact = await createContact(
+      {
+        name,
+        phoneNumber,
+        email,
+        isFavourite,
+        contactType,
+        ...(photoUrl ? { photo: photoUrl } : {}), 
+      },
+      req.user._id
+    );
+
+    res.status(201).json({
+      status: 201,
+      message: 'Successfully created a contact!',
+      data: contact,
+    });
+  } catch (err) {
     next(err);
   }
 };
