@@ -1,0 +1,49 @@
+type: object
+description: 'Contact entity'
+additionalProperties: false
+required:
+  - _id
+  - name
+  - phoneNumber
+  - email
+  - contactType
+  - userId
+properties:
+  _id:
+    description: "Contact's id"
+    type: string
+    pattern: '^[a-fA-F0-9]{24}$'
+    readOnly: true
+    example: '68b332705cdd16222004a2bd'
+  name:
+    description: "Contact's name"
+    type: string
+    minLength: 1
+    maxLength: 200
+    example: 'John Doe'
+  phoneNumber:
+    description: "Contact's number in E.164 format"
+    type: string
+    pattern: '^\+[1-9]\d{1,14}$'
+    example: '+380000000003'
+  email:
+    description: "Contact's email"
+    type: string
+    format: email
+    example: 'vdim2@gmail.com'
+  contactType:
+    description: "Contact's type"
+    type: string
+    enum: ['work', 'home', 'personal']
+    example: 'personal'
+  userId:
+    description: "Contact's parent id"
+    type: string
+    pattern: '^[a-fA-F0-9]{24}$'
+    readOnly: true
+    example: '68b328246e5a138b8b59c8ca'
+  photo:
+    description: "Link to contact's photo"
+    type: string
+    format: uri
+    example: 'https://res.cloudinary.com/devsdhe6m/image/upload/v1756234289/limonbyiedfvov7ul38y.jpg'
