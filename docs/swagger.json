@@ -645,7 +645,7 @@
         }
       }
     },
-    "/auth/refresh": {
+    "/auth/logout": {
       "post": {
         "tags": [
           "Auth"
@@ -681,7 +681,7 @@
         },
         "responses": {
           "204": {
-            "description": "Contact deleted"
+            "description": "Logout user"
           },
           "401": {
             "$ref": "#/components/responses/401"
