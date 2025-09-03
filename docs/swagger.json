@@ -11,9 +11,6 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
-    },
-    {
       "url": "https://contacts-app-k1ri.onrender.com"
     }
   ],
@@ -371,8 +368,7 @@
                     "maxLength": 200
                   },
                   "phoneNumber": {
-                    "type": "string",
-                    "pattern": "^\\+[1-9]\\d{1,14}$"
+                    "type": "string"
                   },
                   "email": {
                     "type": "string",
