@@ -20,14 +20,17 @@ requestBody:
         properties:
           name:
             type: string
-            minLength: 1
+            minLength: 3
             maxLength: 200
+            example: 'John Doe'
           phoneNumber:
             type: string
             pattern: '^\+[1-9]\d{1,14}$'
+            example: '+380111111111'
           email:
             type: string
             format: email
+            example: 'user@example.com'
           contactType:
             type: string
             enum: [work, home, personal]

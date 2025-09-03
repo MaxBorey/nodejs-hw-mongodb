@@ -202,16 +202,19 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "minLength": 1,
-                    "maxLength": 200
+                    "minLength": 3,
+                    "maxLength": 200,
+                    "example": "John Doe"
                   },
                   "phoneNumber": {
                     "type": "string",
-                    "pattern": "^\\+[1-9]\\d{1,14}$"
+                    "pattern": "^\\+[1-9]\\d{1,14}$",
+                    "example": "+380111111111"
                   },
                   "email": {
                     "type": "string",
-                    "format": "email"
+                    "format": "email",
+                    "example": "user@example.com"
                   },
                   "contactType": {
                     "type": "string",
@@ -364,15 +367,19 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "minLength": 1,
-                    "maxLength": 200
+                    "minLength": 3,
+                    "maxLength": 200,
+                    "example": "John Doe"
                   },
                   "phoneNumber": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^\\+[1-9]\\d{1,14}$",
+                    "example": "+380111111111"
                   },
                   "email": {
                     "type": "string",
-                    "format": "email"
+                    "format": "email",
+                    "example": "user@example.com"
                   },
                   "contactType": {
                     "type": "string",
