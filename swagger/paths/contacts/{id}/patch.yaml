@@ -41,7 +41,6 @@ requestBody:
           photo:
             type: string
             format: binary
-            description: 'Contacts photo'
 responses:
   '201':
     description: Update a contact
