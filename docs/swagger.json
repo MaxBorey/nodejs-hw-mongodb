@@ -228,8 +228,17 @@
                     ]
                   },
                   "photo": {
-                    "type": "string",
-                    "format": "binary"
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "format": "binary"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ],
+                    "description": "Photo as a file or as a URL"
                   }
                 }
               }
@@ -816,7 +825,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Access token expired"
+                      "example": "Unauthorized"
                     }
                   }
                 }
@@ -853,7 +862,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Contact not found"
+                      "example": "Not found"
                     }
                   }
                 }
@@ -890,7 +899,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Email in use"
+                      "example": "Conflict"
                     }
                   }
                 }
