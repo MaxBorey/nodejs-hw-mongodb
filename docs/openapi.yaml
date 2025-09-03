@@ -15,6 +15,15 @@ servers:
   - url: http://localhost:3000
   - url: https://contacts-app-k1ri.onrender.com
 paths:
+  /auth/register:
+    post:
+      $ref: ../swagger/paths/auth/register/post.yaml
+  /auth/login:
+    post:
+      $ref: ../swagger/paths/auth/login/post.yaml
+  /auth/logout:
+    post:
+      $ref: ../swagger/paths/auth/logout/post.yaml
   /contacts:
     get:
       $ref: ../swagger/paths/contacts/get.yaml
@@ -27,15 +36,7 @@ paths:
       $ref: ../swagger/paths/contacts/{id}/patch.yaml
     delete:
       $ref: ../swagger/paths/contacts/{id}/delete.yaml
-  /auth/register:
-    post:
-      $ref: ../swagger/paths/auth/register/post.yaml
-  /auth/login:
-    post:
-      $ref: ../swagger/paths/auth/login/post.yaml
-  /auth/logout:
-    post:
-      $ref: ../swagger/paths/auth/logout/post.yaml
+
 components:
   securitySchemes:
     bearerAuth:
