@@ -19,3 +19,20 @@ Node.js, Express, MongoDB/Mongoose, JWT, Google OAuth, Swagger UI.
 1. Встановіть залежності:
    ```bash
    npm i
+2. Сконфігуруйте змінні середовища:
+   ```bash
+   cp .env.example .env
+   # Заповніть: MONGODB_URI, JWT_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET тощо
+3. Запустіть застосунок:
+npm run dev   # режим розробки
+# або
+npm start     # продакшн-запуск 
+4. Документація API:
+Swagger UI: http://localhost:PORT/api-docs
+5. Scripts (див. package.json)
+- `start` — продакшн-запуск.
+- `dev` — локальний запуск у режимі розробки.
+- `build` — підготовка продакшн-збірки.
+- `build-docs` — генерація статичної документації.
+- `preview-docs` — локальний перегляд документації.
+- `lint` — перевірка стилю коду (ESLint/Prettier).
