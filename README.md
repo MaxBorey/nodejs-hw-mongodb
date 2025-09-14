@@ -29,7 +29,7 @@ npm run dev   # режим розробки
 npm start     # продакшн-запуск 
 4. Документація API:
 Swagger UI: http://localhost:PORT/api-docs
-5. Scripts (див. package.json)
+5. ## Scripts
 - `start` — продакшн-запуск.
 - `dev` — локальний запуск у режимі розробки.
 - `build` — підготовка продакшн-збірки.
