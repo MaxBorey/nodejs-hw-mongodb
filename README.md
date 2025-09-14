@@ -27,8 +27,10 @@ Node.js, Express, MongoDB/Mongoose, JWT, Google OAuth, Swagger UI.
 npm run dev   # режим розробки
 # або
 npm start     # продакшн-запуск 
+
 4. Документація API:
 Swagger UI: http://localhost:PORT/api-docs
+
 5. ## Scripts
 - `start` — продакшн-запуск.
 - `dev` — локальний запуск у режимі розробки.
