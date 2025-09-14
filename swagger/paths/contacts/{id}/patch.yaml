@@ -1,0 +1,67 @@
+tags:
+  - Contacts
+summary: Patch contact
+operationId: updateContact
+description: Update a contact with payload
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    description: Contact ID
+    schema:
+      type: string
+      example: '68b332705cdd16222004a2bd'
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        additionalProperties: false
+        minProperties: 1
+        properties:
+          name:
+            type: string
+            minLength: 3
+            maxLength: 200
+            example: 'John Doe'
+          phoneNumber:
+            type: string
+            pattern: '^\+[1-9]\d{1,14}$'
+            example: '+380111111111'
+          email:
+            type: string
+            format: email
+            example: 'user@example.com'
+          contactType:
+            type: string
+            enum: [work, home, personal]
+          photo:
+            type: string
+            format: binary
+responses:
+  '201':
+    description: Update a contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully patched a contact!
+            data:
+              $ref: '../../../components/schemas/contact.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../components/responses/404.yaml'
